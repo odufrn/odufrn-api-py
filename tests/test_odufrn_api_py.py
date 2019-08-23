@@ -1,5 +1,6 @@
-import utils
+from .utils import *
 
 
-class Test(Unittest.Test):
-    pass
+class ODUFRNApi(Unittest.Test):
+    def setUp(self):
+        self.api_ufrn = ODUFRNApi()

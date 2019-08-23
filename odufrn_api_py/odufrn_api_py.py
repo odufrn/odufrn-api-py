@@ -1,6 +1,7 @@
 from .modules.Env import Env
 from .modules.Exceptions import *
 
+
 class ODUFRNApi(Env):
     def __init__(self, client_id, client_secret, x_api_key, version):
         super().__init__(client_id, client_secret, x_api_key, version)
