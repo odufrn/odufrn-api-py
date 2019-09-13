@@ -18,7 +18,7 @@ class Env(ABC):
     version: str
         Versão da API a ser utilizada.
     """
-    def __init__(self, client_id: str, client_secret: str, 
+    def __init__(self, client_id: str, client_secret: str,
                  x_api_key: str, version: str):
         self.url_base = 'https://api.ufrn.br/'
         self.warnings = False
@@ -49,7 +49,7 @@ class Env(ABC):
         ---------
         url: str
             a url que será formatada
-        
+
         Retorno
         ---------
         str:
