@@ -4,7 +4,22 @@ from abc import ABC
 
 
 class Env(ABC):
-    def __init__(self, client_id, client_secret, x_api_key, version):
+    """Classe com os atributos e métodos responsáveis pelo
+    funcionamento do pacote.
+
+    Atributos
+    ---------
+    client_id: str
+        Chave do cliente da API da UFRN.
+    client_secret: str
+        Segredo do cliente da API da UFRN.
+    x_api_key: str
+        Hash de acesso a API da UFRN.
+    version: str
+        Versão da API a ser utilizada.
+    """
+    def __init__(self, client_id: str, client_secret: str, 
+                 x_api_key: str, version: str):
         self.url_base = 'https://api.ufrn.br/'
         self.warnings = False
         self.swagger_url = 'https://swagger.info.ufrn.br/'
@@ -29,13 +44,16 @@ class Env(ABC):
         self._auth_api_request()
 
     def _format_url_to_resource(self, url):
-        """Transforma uma url de um recurso em um nome de recurso.
-
-        Ex.
-            converte:
-                https://swagger.info.ufrn.br/?url=https://api.ufrn.br/acao-associada/v1/v2/api-docs
-            em:
-                https://api.ufrn.br/acao-associada/v1/v2/api-docs
+        """Converte a url de um recurso em um nome de recurso.
+        Atributos
+        ---------
+        url: str
+            a url que será formatada
+        
+        Retorno
+        ---------
+        str:
+            url no formato https://api.ufrn.br/algum-resource/v1/v2/api-docs
         """
         return url.replace(self.swagger_url + '?url=', '')
 
@@ -47,9 +65,9 @@ class Env(ABC):
         chave irá expirar.
         """
         requisicao_token = requests.post(self.url_token)
-        resposta = json.loads(requisicao_token.content)
-        self.token = resposta['access_token']
-        self.token_expires_in = resposta['expires_in']
+        response = json.loads(requisicao_token.content)
+        self.token = response['access_token']
+        self.token_expires_in = response['expires_in']
         self.headers['Authorization'] = 'bearer ' + self.token
 
     def _make_requests(self, url):
