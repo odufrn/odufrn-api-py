@@ -6,7 +6,7 @@ from os.path import dirname, join, abspath
 sys.path.insert(0, abspath(join(dirname(__file__), '..')))
 
 
-def input_value(fun):
+def input_value(fun: callable):
     """Recebe função que imprime algo na tela e retorna impressao."""
     capturedOutput = io.StringIO()
     sys.stdout = capturedOutput
@@ -15,7 +15,7 @@ def input_value(fun):
     return capturedOutput.getvalue()
 
 
-def assert_console(fun):
+def assert_console(fun: callable):
     """Recebe função que printa algo na tela e realiza assert
     que verifica se foi printado."""
     unit = unittest.TestCase()
