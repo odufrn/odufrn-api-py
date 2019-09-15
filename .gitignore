@@ -1,6 +1,7 @@
 # Local files
 tests/main.py
-.vscode
+.vscode/
+.idea/
 
 # Pipfiles
 Pipfile
