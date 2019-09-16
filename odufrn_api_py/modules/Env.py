@@ -42,7 +42,7 @@ class Env(ABC):
         }
         self._auth_api_request()
 
-    def _format_url_to_resource(self, url):
+    def _format_url_to_resource(self, url: str):
         """Converte a url de um recurso em um nome de recurso.
         Atributos
         ---------
@@ -69,7 +69,7 @@ class Env(ABC):
         self.token_expires_in = response['expires_in']
         self.headers['Authorization'] = 'bearer ' + self.token
 
-    def _make_requests(self, url):
+    def _make_requests(self, url: str):
         """Realiza requisição a API.
 
         Espera-se o usuário previamente autenticado. Caso o token
