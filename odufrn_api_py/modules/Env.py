@@ -5,21 +5,20 @@ from abc import ABC
 
 class Env(ABC):
     """Classe com os atributos e métodos responsáveis pelo
-    funcionamento do pacote.
-
-    Atributos
-    ---------
-    client_id: str
-        Chave do cliente da API da UFRN.
-    client_secret: str
-        Segredo do cliente da API da UFRN.
-    x_api_key: str
-        Hash de acesso a API da UFRN.
-    version: str
-        Versão da API a ser utilizada.
-    """
+    funcionamento do pacote."""
     def __init__(self, client_id: str, client_secret: str,
                  x_api_key: str, version: str):
+        """
+        Atributos
+        ---------
+        client_id: str
+            Chave do cliente da API da UFRN.
+        client_secret: str
+            Segredo do cliente da API da UFRN.
+        x_api_key: str
+            Hash de acesso a API da UFRN.
+        version: str
+        Versão da API a ser utilizada."""
         self.url_base = 'https://api.ufrn.br/'
         self.warnings = False
         self.swagger_url = 'https://swagger.info.ufrn.br/'

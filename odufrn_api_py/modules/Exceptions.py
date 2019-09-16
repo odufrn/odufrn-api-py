@@ -1,5 +1,3 @@
-
-
 class HeaderError(Exception):
     """Exception emitida quando acontece algum erro
     no header da requisição."""
