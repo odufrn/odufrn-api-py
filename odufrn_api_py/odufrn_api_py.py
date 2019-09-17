@@ -1,5 +1,4 @@
 from .modules.Core import Core
-from .modules.Exceptions import *
 
 
 class UfrnApi(Core):
