@@ -10,7 +10,7 @@ class UfrnApi(Core):
         """
         super().__init__(client_id, client_secret, x_api_key, version)
 
-    def print_resources(self):
+    def print_resources(self) -> None:
         """Imprime na tela os recursos presentes na API.
         """
         for resource in self._request_get(self.url_base + 'documentacao'):

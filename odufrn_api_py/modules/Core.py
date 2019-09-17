@@ -27,7 +27,7 @@ class Core(ABC):
         self.warnings = False
         self.swagger_url = 'https://swagger.info.ufrn.br/'
         self.url_base_autenticacao = 'https://autenticacao.info.ufrn.br/'
-        # construtores
+        # Construtores
         self.client_id = client_id
         self.client_secret = client_secret
         self.x_api_key = x_api_key
@@ -36,7 +36,7 @@ class Core(ABC):
                         'client_id={0}&client_secret={1}' +
                         '&grant_type=client_credentials'
                         ).format(client_id, client_secret)
-        # variáveis necessárias para autenticação na api
+        # Variáveis necessárias para autenticação na api
         self.url_token = self.url_base_autenticacao + autenticacao
         self.token = ''
         self.token_expires_in = 0
@@ -46,7 +46,7 @@ class Core(ABC):
         }
         self._auth_api_request()
 
-    def _format_url_to_resource(self, url: str):
+    def _format_url_to_resource(self, url: str) -> str:
         """Converte a url de um recurso em um nome de recurso.
         Atributos
         ---------
@@ -60,7 +60,7 @@ class Core(ABC):
         """
         return url.replace(self.swagger_url + '?url=', '')
 
-    def _auth_api_request(self):
+    def _auth_api_request(self) -> None:
         """Realiza o processo de autenticacao dos dados do usuário.
 
         Primeiro realiza uma requisição post com as chaves da api,
@@ -73,7 +73,7 @@ class Core(ABC):
         self.token_expires_in = response['expires_in']
         self.headers['Authorization'] = 'bearer ' + self.token
 
-    def _make_requests(self, url: str) :
+    def _make_requests(self, url: str) -> requests.models.Response:
         """Realiza requisição a API.
 
         Espera-se o usuário previamente autenticado. Caso o token
@@ -96,7 +96,8 @@ class Core(ABC):
         Retorno
         ----------
         dict:
-            a resposta da requisição em json (dicionário)."""
+            a resposta da requisição em json (dicionário).
+        """
         request_get = requests.get(url)
 
         return request_get.json()
