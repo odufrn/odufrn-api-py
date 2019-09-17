@@ -3,9 +3,10 @@ import requests
 from abc import ABC
 
 
-class Env(ABC):
+class Core(ABC):
     """Classe com os atributos e métodos responsáveis pelo
     funcionamento do pacote."""
+
     def __init__(self, client_id: str, client_secret: str,
                  x_api_key: str, version: str):
         """

@@ -1,8 +1,8 @@
-from .modules.Env import Env
+from .modules.Core import Core
 from .modules.Exceptions import *
 
 
-class UfrnApi(Env):
+class UfrnApi(Core):
     """Classe que reune todos os módulos do pacote."""
     def __init__(self, client_id: str, client_secret: str,
                  x_api_key: str, version: str):
