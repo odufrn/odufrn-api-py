@@ -1,6 +1,7 @@
 import json
 import requests
 from abc import ABC
+from .exceptions import HeaderException
 
 
 class Core(ABC):
@@ -72,7 +73,7 @@ class Core(ABC):
         self.token_expires_in = response['expires_in']
         self.headers['Authorization'] = 'bearer ' + self.token
 
-    def _make_requests(self, url: str):
+    def _make_requests(self, url: str) :
         """Realiza requisição a API.
 
         Espera-se o usuário previamente autenticado. Caso o token
@@ -80,7 +81,22 @@ class Core(ABC):
         """
         try:
             if self.token == '' or self.token_expires_in <= 0:
-                raise HeaderError
+                raise HeaderException
             return requests.get(url, headers=self.headers)
-        except HeaderError as e:
-            raise HeaderError from e
+        except HeaderException as e:
+            raise HeaderException from e
+
+    def _request_get(self, url: str) -> dict:
+        """Realiza a requisição desejada e retorna os dados
+        e o caminho formado para download.
+        Parâmetros
+        ----------
+        url: str
+            a url que se deseja realizar a requisição.
+        Retorno
+        ----------
+        dict:
+            a resposta da requisição em json (dicionário)."""
+        request_get = requests.get(url)
+
+        return request_get.json()
