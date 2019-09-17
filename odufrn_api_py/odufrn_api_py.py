@@ -1,16 +1,18 @@
-from .modules.Env import Env
-from .modules.Exceptions import *
+from .modules.Core import Core
 
 
-class UfrnApi(Env):
-    """Classe que reune todos os módulos do pacote."""
+class UfrnApi(Core):
+    """Classe que reune todos os módulos do pacote.
+    """
     def __init__(self, client_id: str, client_secret: str,
                  x_api_key: str, version: str):
-        """Construtor do pacote. Passa atributos pra classe Env"""
+        """Construtor do pacote. Passa atributos pra classe Env.
+        """
         super().__init__(client_id, client_secret, x_api_key, version)
 
-    def print_resources(self):
-        """Imprime na tela os recursos presentes na API."""
+    def print_resources(self) -> None:
+        """Imprime na tela os recursos presentes na API.
+        """
         for resource in self._request_get(self.url_base + 'documentacao'):
             print(
                 "Nome: {},\nUrl: {},\n".format(
