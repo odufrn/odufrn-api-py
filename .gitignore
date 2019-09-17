@@ -1,3 +1,12 @@
+# Local files
+tests/main.py
+.vscode/
+.idea/
+
+# Pipfiles
+Pipfile
+Pipfile.lock
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
