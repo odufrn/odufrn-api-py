@@ -9,7 +9,7 @@ pip install -e .
 ```
 
 ## Guia de uso
-```
+```python
 from odufrn_api_py import UfrnApi
 wrapper_api = UfrnApi('client-id', 'client-secret', 'x-api-key', 'api-version')
 ```
