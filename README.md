@@ -1,3 +1,7 @@
+<a href="https://github.com/odufrn/odufrn-api-py/blob/master/LICENSE">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen.svg">
+</a>
+
 ## OPEN DATA UFRN API WRAPPER
 
 Implementação de uma interface pythonica para uso da [API da UFRN](https://api.ufrn.br/). 
