@@ -1,17 +1,25 @@
-# Welcome to MkDocs
+<a href="https://github.com/odufrn/odufrn-api-py/blob/master/LICENSE">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen.svg">
+</a>
 
-For full documentation visit [mkdocs.org](https://mkdocs.org).
+## OPEN DATA UFRN API WRAPPER
 
-## Commands
+Implementação de uma interface pythonica para uso da [API da UFRN](https://api.ufrn.br/). 
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+## Instalação
+O repositório ainda não está no pipy, sua instalação local pode ser feita com:
+```
+pip install -e .
+```
 
-## Project layout
+## Guia de uso
+```python
+from odufrn_api_py import UfrnApi
+wrapper_api = UfrnApi('client-id', 'client-secret', 'x-api-key', 'api-version')
+```
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## Métodos
+
+| Método | Descrição |
+| ------ | --------- |
+| print_resources | Imprime no terminal todos os serviços disponibilizados pela API |
