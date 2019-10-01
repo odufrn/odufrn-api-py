@@ -1,0 +1,11 @@
+site_name: odufrn-api-py
+site_url: https://github.com/odufrn/odufrn-api-py
+site_description: Wrapper em Python que facilita o uso da API de consulta de dados abertos da UFRN.
+site_author: Open Data UFRN
+
+nav:
+    - Instalação: index.md
+
+repo_url: https://github.com/odufrn/odufrn-api-py
+
+theme: readthedocs
