@@ -10,8 +10,15 @@ install:
 - pip install environs
 before_install:
 - pip install --upgrade pip
+
 script:
 - find . -name \*.py -exec pycodestyle --ignore=E402,W504 {} +
+- python -m unittest -v
+- coverage run --source=. --omit=setup.py -m unittest -v
+
+after_success:
+- coveralls
+
 env:
   global:
   - secure: GvQBynFlT08vmdv+6dni+YfZFrSrP1cH0gcJ4Bb/JpKhoMFDwBzszToomf8ZAJljRkFQz/1cfw/nK/1jk1llboOnr5c29Wuo8v1CMms+iRVbqhMGr4N8qexLaodWo5Irh9oyyRjEBFgZcsQyxZCxRWqb/XV0cGuI3YU9P5MbtlGPstVBZiJl92azn1phvsY++TFYeWP8bVebyU15hMSvz8YC8ERr3z5XKjPh6DgNTS0emM0al0j/X1Xd9AXU5nm4lCwIKH+7C8ynGtdOJ2f4cgGZNaVpnR4pYjZGWf9AIg29fgGeqyZVDyvJsUl1UtCMZOapGsyBQ7GHMAdq7Hwk3XW+vjZpHGk58h7txl0RbjdzJJEn+eSo37QLx7k/Jvbf+zfvPUOTMehToREZ57nRZdsq0/mURJ8q0RGLGNnaCEJmNdJupadOe18A2gc6EWRbdJbXTdqikCjS01WfpNCXS2hjnOzds37B0I2DJ8d0n9+ZYJRvgBZMYuI5nhf6ly9LeVAI5juRuKtXb4pAHE80ON3zUDSx009SByr9RDYn8kf1w6dXrMXJaudXljRh8kSUKNIvlBDlAgHp3/h4AWD/nyTnY8Za10PryAi8gJYlMvUJnM4yb0ZF7dHZRCcl77vR+m2Dr71ZSYJ/Rg/ac9P/1XbhVrXC5X30OAXYT8FhYMQ=
