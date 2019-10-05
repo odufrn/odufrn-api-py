@@ -68,7 +68,7 @@ class Core(ABC):
         chave irá expirar.
         """
         requisicao_token = requests.post(self.url_token)
-        response = json.loads(requisicao_token.content)
+        response = json.loads(requisicao_token.content.decode('utf-8'))
         self.token = response['access_token']
         self.token_expires_in = response['expires_in']
         self.headers['Authorization'] = 'bearer ' + self.token
