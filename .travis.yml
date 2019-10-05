@@ -2,6 +2,7 @@ language: python
 python:
 - '3.5'
 - '3.6'
+- '3.7'
 fail_fast: true
 install:
 - python setup.py install
