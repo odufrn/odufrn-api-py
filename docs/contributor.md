@@ -29,7 +29,7 @@ Essas chaves serão requeridas para a execução dos testes através do código 
 from environs import Env
 
 def setUp(self):
-    """ Inicia novo objeto em todos os testes."""
+    
     env = Env()
     env.read_env()
     self.api_ufrn = UfrnApi(
