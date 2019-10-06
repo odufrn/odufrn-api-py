@@ -31,6 +31,7 @@ class UfrnApi(Core):
                 url = self._format_url_to_resource(resource['url'])
                 break
 
+        print("Conjuntos de dados do serviço {}.".format(name))
         for sub_resource in self._request_get(url)['tags']:
             print(
                 "Nome: {}\nDescription: {}\n".format(
@@ -50,6 +51,7 @@ class UfrnApi(Core):
                 url = self._format_url_to_resource(resource['url'])
                 break
 
+        print("Conjunto de endpoints do serviço {}.".format(name))
         paths = self._request_get(url)['paths']
         for sub_resource in paths:
             print(
