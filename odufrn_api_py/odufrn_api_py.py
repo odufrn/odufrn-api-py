@@ -20,9 +20,9 @@ class UfrnApi(Core):
                     self._format_url_to_resource(resource['url']),
                 )
             )
-    
+
     def print_resources_details(self, name) -> None:
-        """ Imprime na tela as categorias de dados 
+        """ Imprime na tela as categorias de dados
         presentes no recurso da API escolhido pelo usuário
         """
         url = ''
@@ -30,14 +30,11 @@ class UfrnApi(Core):
             if resource['name'] == name:
                 url = self._format_url_to_resource(resource['url'])
                 break
-        
+
         for sub_resource in self._request_get(url)['tags']:
             print(
                 "Nome: {}\nDescription: {}\n".format(
-                    sub_resource['name'], 
+                    sub_resource['name'],
                     sub_resource['description']
                 )
             )
-
-
-
