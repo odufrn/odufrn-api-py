@@ -21,7 +21,7 @@ class UfrnApi(Core):
                 )
             )
 
-    def print_resources_details(self, name) -> None:
+    def print_resource_details(self, name) -> None:
         """ Imprime na tela as categorias de dados
         presentes no recurso da API escolhido pelo usuário
         """
@@ -36,5 +36,25 @@ class UfrnApi(Core):
                 "Nome: {}\nDescription: {}\n".format(
                     sub_resource['name'],
                     sub_resource['description']
+                )
+            )
+
+    def print_resource_endpoints(self, name) -> None:
+        """ Imprime na tela todos os endpoints que o serviço
+        específico oferece.
+        """
+        # Código repetido muitas vezes, uma função pode ser interessante
+        url = ''
+        for resource in self._request_get(self.url_base + 'documentacao'):
+            if resource['name'] == name:
+                url = self._format_url_to_resource(resource['url'])
+                break
+
+        paths = self._request_get(url)['paths']
+        for sub_resource in paths:
+            print(
+                "Url: {}\nSummary: {}\n".format(
+                    str(sub_resource),
+                    paths[str(sub_resource)]['get']['summary']
                 )
             )

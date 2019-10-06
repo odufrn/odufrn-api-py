@@ -21,8 +21,15 @@ class ODUFRNApi(unittest.TestCase):
         """
         assert_console(self.api_ufrn.print_resources)
 
-    def test_can_print_resources_details(self):
+    def test_can_print_resource_details(self):
         """Verifica se consegue mostrar na tela os conjunto de dados de
         um recurso da API
         """
-        assert_console(lambda: self.api_ufrn.print_resources_details('Pessoa'))
+        assert_console(lambda: self.api_ufrn.print_resource_details('Pessoa'))
+
+    def test_can_print_resource_endpoints(self):
+        """Verifica se consegur mostrar na tela o conjunto de endpoins
+        de um recurso específico da API
+        """
+        assert_console(lambda: self.api_ufrn.print_resource_endpoints(
+            'Pessoa'))
