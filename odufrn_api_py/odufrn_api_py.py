@@ -65,7 +65,6 @@ class UfrnApi(Core):
             Nome do recurso que será usado para recuperar os
             endpoints.
         """
-
         print("Conjunto de endpoints do serviço {}.".format(name))
         paths = self._request_get(self.__url__(name))['paths']
         for endpoint in paths:
@@ -80,10 +79,16 @@ class UfrnApi(Core):
             endpoint_get = paths[str(endpoint)]['get']
             if 'parameters' in endpoint_get:
                 for parameter in endpoint_get['parameters']:
-                    print(
-                        '{}, '.format(parameter['name']),
-                        end=''
-                    )
+                    if parameter == endpoint_get['parameters'][-1]:
+                        print(
+                            '{}'.format(parameter['name']),
+                            end=''
+                        )
+                    else:
+                        print(
+                            '{}, '.format(parameter['name']),
+                            end=''
+                        )
             else:
                 print("No parameters", end='')
 
