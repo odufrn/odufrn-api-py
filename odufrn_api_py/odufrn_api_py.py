@@ -67,6 +67,8 @@ class UfrnApi(Core):
         """
         print("Conjunto de endpoints do serviço {}.".format(name))
         paths = self._request_get(self.__url__(name))['paths']
+
+        # Imprimindo Endpoint e Summary na tela 
         for endpoint in paths:
             print(
                 "Endpoint: {}\nSummary: {}".format(
@@ -75,10 +77,13 @@ class UfrnApi(Core):
                 )
             )
 
+            # Imprimindo os parâmetros do endpoint específico
             print('Parameters: [', end='')
             endpoint_get = paths[str(endpoint)]['get']
+            # Verificando se o endpoint possui parâmetros
             if 'parameters' in endpoint_get:
                 for parameter in endpoint_get['parameters']:
+                    # Verificando se é ultimo parâmetro
                     if parameter == endpoint_get['parameters'][-1]:
                         print(
                             '{}'.format(parameter['name']),
