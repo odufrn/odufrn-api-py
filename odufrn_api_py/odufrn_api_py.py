@@ -17,8 +17,8 @@ class UfrnApi(Core):
         Parâmetros
         ----------
         name: str
-            Nome do recurso utiliado para recuperar
-            a url desse memso recurso.
+            Nome do recurso utilizado para recuperar
+            a url desse mesmo recurso.
         """
         for resource in self._request_get(self.url_base + 'documentacao'):
             if resource['name'] == name:
