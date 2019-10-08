@@ -25,4 +25,6 @@ wrapper_api = UfrnApi('client-id', 'client-secret', 'x-api-key', 'api-version')
 
 | Método | Descrição |
 | ------ | --------- |
-| print_resources | Imprime no terminal todos os serviços disponibilizados pela API |
+| `print_resources` | Imprime no terminal todos os serviços disponibilizados pela API |
+| `print_resource_details` | Imprime no terminal todos os conjuntos de dados de um serviço específico da API |
+| `print_resource_endpoints` | Imprime no terminal todos os endpoints que um serviço da API dispões |
