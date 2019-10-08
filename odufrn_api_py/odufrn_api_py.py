@@ -68,7 +68,7 @@ class UfrnApi(Core):
         print("Conjunto de endpoints do serviço {}.".format(name))
         paths = self._request_get(self.__url__(name))['paths']
 
-        # Imprimindo Endpoint e Summary na tela 
+        # Imprimindo Endpoint e Summary na tela
         for endpoint in paths:
             print(
                 "Endpoint: {}\nSummary: {}".format(
