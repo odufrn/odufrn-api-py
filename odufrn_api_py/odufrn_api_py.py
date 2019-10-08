@@ -21,7 +21,7 @@ class UfrnApi(Core):
                 )
             )
 
-    def print_resource_details(self, name) -> None:
+    def print_resource_details(self, name: str) -> None:
         """ Imprime na tela as categorias de dados
         presentes no recurso da API escolhido pelo usuário.
 
@@ -46,7 +46,7 @@ class UfrnApi(Core):
                 )
             )
 
-    def print_resource_endpoints(self, name) -> None:
+    def print_resource_endpoints(self, name: str) -> None:
         """ Imprime na tela todos os endpoints que o serviço
         específico oferece.
 
