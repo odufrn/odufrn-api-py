@@ -27,7 +27,7 @@ class UfrnApi(Core):
 
         Parâmetros
         ----------
-        keyword: str
+        name: str
             Nome do recurso utiliado para recuperar os
             datasets e descrição dos mesmos.
         """
@@ -52,7 +52,7 @@ class UfrnApi(Core):
 
         Parâmetros
         ----------
-        keyword: str
+        name: str
             Nome do recurso que será usado para recuperar os
             endpoints.
         """
