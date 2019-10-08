@@ -70,16 +70,16 @@ class UfrnApi(Core):
         paths = self._request_get(self.__url__(name))['paths']
         for endpoint in paths:
             print(
-                "Url: {}\nSummary: {}".format(
+                "Endpoint: {}\nSummary: {}".format(
                     str(endpoint),
                     paths[str(endpoint)]['get']['summary']
                 )
             )
 
             print('Parameters: [', end='')
-
-            if 'parameters' in paths[str(endpoint)]['get']:
-                for parameter in paths[str(endpoint)]['get']['parameters']:
+            endpoint_get = paths[str(endpoint)]['get']
+            if 'parameters' in endpoint_get:
+                for parameter in endpoint_get['parameters']:
                     print(
                         '{}, '.format(parameter['name']),
                         end=''
