@@ -23,7 +23,13 @@ class UfrnApi(Core):
 
     def print_resource_details(self, name) -> None:
         """ Imprime na tela as categorias de dados
-        presentes no recurso da API escolhido pelo usuário
+        presentes no recurso da API escolhido pelo usuário.
+
+        Parâmetros
+        ----------
+        keyword: str
+            Nome do recurso utiliado para recuperar os
+            datasets e descrição dos mesmos.
         """
         url = ''
         for resource in self._request_get(self.url_base + 'documentacao'):
@@ -43,6 +49,12 @@ class UfrnApi(Core):
     def print_resource_endpoints(self, name) -> None:
         """ Imprime na tela todos os endpoints que o serviço
         específico oferece.
+
+        Parâmetros
+        ----------
+        keyword: str
+            Nome do recurso que será usado para recuperar os
+            endpoints.
         """
         # Código repetido muitas vezes, uma função pode ser interessante
         url = ''
