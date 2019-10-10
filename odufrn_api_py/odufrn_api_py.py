@@ -10,6 +10,20 @@ class UfrnApi(Core):
         """
         super().__init__(client_id, client_secret, x_api_key, version)
 
+    def __url__(self, name: str) -> str:
+        """Retorna a url de acordo com o nome do recurso passado
+        pelo usuário.
+
+        Parâmetros
+        ----------
+        name: str
+            Nome do recurso utilizado para recuperar
+            a url desse mesmo recurso.
+        """
+        for resource in self._request_get(self.url_base + 'documentacao'):
+            if resource['name'] == name:
+                return self._format_url_to_resource(resource['url'])
+
     def print_resources(self) -> None:
         """Imprime na tela os recursos presentes na API.
         """
@@ -31,14 +45,9 @@ class UfrnApi(Core):
             Nome do recurso utiliado para recuperar os
             datasets e descrição dos mesmos.
         """
-        url = ''
-        for resource in self._request_get(self.url_base + 'documentacao'):
-            if resource['name'] == name:
-                url = self._format_url_to_resource(resource['url'])
-                break
 
         print("Conjuntos de dados do serviço {}.".format(name))
-        for sub_resource in self._request_get(url)['tags']:
+        for sub_resource in self._request_get(self.__url__(name))['tags']:
             print(
                 "Nome: {}\nDescription: {}\n".format(
                     sub_resource['name'],
@@ -56,19 +65,36 @@ class UfrnApi(Core):
             Nome do recurso que será usado para recuperar os
             endpoints.
         """
-        # Código repetido muitas vezes, uma função pode ser interessante
-        url = ''
-        for resource in self._request_get(self.url_base + 'documentacao'):
-            if resource['name'] == name:
-                url = self._format_url_to_resource(resource['url'])
-                break
-
         print("Conjunto de endpoints do serviço {}.".format(name))
-        paths = self._request_get(url)['paths']
-        for sub_resource in paths:
+        paths = self._request_get(self.__url__(name))['paths']
+
+        # Imprimindo Endpoint e Summary na tela
+        for endpoint in paths:
             print(
-                "Url: {}\nSummary: {}\n".format(
-                    str(sub_resource),
-                    paths[str(sub_resource)]['get']['summary']
+                "Endpoint: {}\nSummary: {}".format(
+                    str(endpoint),
+                    paths[str(endpoint)]['get']['summary']
                 )
             )
+
+            # Imprimindo os parâmetros do endpoint específico
+            print('Parameters: [', end='')
+            endpoint_get = paths[str(endpoint)]['get']
+            # Verificando se o endpoint possui parâmetros
+            if 'parameters' in endpoint_get:
+                for parameter in endpoint_get['parameters']:
+                    # Verificando se é ultimo parâmetro
+                    if parameter == endpoint_get['parameters'][-1]:
+                        print(
+                            '{}'.format(parameter['name']),
+                            end=''
+                        )
+                    else:
+                        print(
+                            '{}, '.format(parameter['name']),
+                            end=''
+                        )
+            else:
+                print("No parameters", end='')
+
+            print(']\n')
